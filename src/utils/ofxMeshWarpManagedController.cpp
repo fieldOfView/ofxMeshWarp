@@ -61,7 +61,7 @@ void ManagedController::mousePressed(ofMouseEventArgs &args)
 	if(is_mover_active_) {
 		mover_.mousePressed(args);
 	}
-	if(is_divider_active_) {
+	if(is_divider_active_ && may_edit_topology_) {
 		divider_.mousePressed(args);
 	}
 }
@@ -89,7 +89,7 @@ void ManagedController::mouseMoved(ofMouseEventArgs &args)
 	}
 	else {
 		divider_.mouseMoved(args);
-		if(divider_.isEditing()) {
+		if(divider_.isEditing() && may_edit_topology_) {
 			activateDivider();
 		}
 		else {

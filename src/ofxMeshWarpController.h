@@ -52,6 +52,9 @@ namespace Editor {
 		void clear();
 		void draw() const;
 		void drawFace() const;
+
+		void setAllowEditMeshTopology(bool set) { may_edit_topology_ = set; }
+		bool mayEditMeshTopology() const { return may_edit_topology_; }
 		
 		void setAnchorPoint(float x, float y) { setAnchorPoint(glm::vec2(x,y)); }
 		void setAnchorPoint(const glm::vec2 &point) { anchor_point_ = point; }
@@ -77,6 +80,8 @@ namespace Editor {
 		bool is_enabled_ = false;
 		virtual void drawCustom() const{};
 		
+		bool may_edit_topology_ = true;
+
 		glm::vec2 anchor_point_=glm::vec2(0,0);
 		glm::vec2 translation_=glm::vec2(0,0);
 		float scale_=1;
